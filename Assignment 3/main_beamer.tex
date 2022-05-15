@@ -1,0 +1,131 @@
+%
+% Welcome to Overleaf --- just edit your LaTeX on the left,
+% and we'll compile it for you on the right. If you open the
+% 'Share' menu, you can invite other users to edit at the same
+% time. See www.overleaf.com/learn for more info. Enjoy!
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+% Inbuilt themes in beamer
+\documentclass{beamer}
+
+% Theme choice:
+\usetheme{CambridgeUS}
+
+% Title page details: 
+\title{12th Class NCERT Chapter 13 Exercise Question 6} 
+\author{Suryaansh Jain}
+\date{\today}
+\logo{\large \LaTeX{}}
+
+\providecommand{\pr}[1]{\ensuremath{\Pr\left(#1\right)}}
+
+
+\begin{document}
+
+% Title page frame
+\begin{frame}
+    \titlepage 
+\end{frame}
+
+% Remove logo from the next slides
+\logo{}
+
+
+% Outline frame
+\begin{frame}{Outline}
+    \tableofcontents
+\end{frame}
+
+
+\section{Question}
+\begin{frame}{Question}
+
+There are 3 coins, one is a two headed coin (has both sides head), one is a biased coin that shows head with $75\%$ probability and the last coin is unbiased. A coin is chosen at random and tossed. It shows head, what is the probability that it is a two headed coin?
+\end{frame}
+
+
+\section{Solution}
+\begin{frame}{Solution}
+Let us call the two headed coin $\mathcal{C}_1$, the biased coin $\mathcal{C}_2$ and the unbiased coin $\mathcal{C}_3$
+\end{frame} 
+
+\section{For $\mathcal{C}_1$}
+\begin{frame}{For $\mathcal{C}_1$}
+Let the random variable $X_{\mathcal{C}_1}$ denote what the coin shows. Then, we see that the sample space is $S = \cbrak{0, 1}$ where $1$ is head and $0$ is tail. The PMF is given by
+\begin{equation}
+\pr{X_{\mathcal{C}_1} = k} = 
+\begin{cases}
+1, & k = 1 \\
+0, & \text{otherwise} 
+\end{cases}
+\label{pmf}
+\end{equation}
+\end{frame} 
+
+\section{For $\mathcal{C}_2$}
+\begin{frame}{For $\mathcal{C}_2$}
+Let the random variable $X_{\mathcal{C}_2}$ denote what the coin shows. Then, we see that the sample space is $S = \cbrak{0, 1}$ where $1$ is head and $0$ is tail. The PMF is given by
+\begin{equation}
+\pr{X_{\mathcal{C}_2} = k} = 
+\begin{cases}
+\frac{3}{4}, & k = 1 \\
+\frac{1}{4}, & k = 0 \\
+0, & \text{otherwise}
+\end{cases}
+\label{pmf}
+\end{equation}
+\end{frame} 
+
+\section{For $\mathcal{C}_3$}
+\begin{frame}{For $\mathcal{C}_3$}
+Let the random variable $X_{\mathcal{C}_3}$ denote what the coin shows. Then, we see that the sample space is $S = \cbrak{0, 1}$ where $1$ is head and $0$ is tail. The PMF is given by
+\begin{equation}
+\pr{X_{\mathcal{C}_3} = k} = 
+\begin{cases}
+\frac{1}{2}, & k = 1 \\
+\frac{1}{2}, & k = 0 \\
+0, & \text{otherwise}
+\end{cases}
+\label{pmf}
+\end{equation}
+\end{frame} 
+
+\section{Tossing the coin}
+\begin{frame} {Tossing the coin}
+Let the random variable $X$ denote the coin we picked. Then we see that the same space is $S = \cbrak{1,2,3}$ where $1$ is $\mathcal{C}_1$, $2$ is $\mathcal{C}_2$ and $3$ is $\mathcal{C}_3$. The PMF is given by
+ 
+\begin{equation}
+\pr{X = k} = 
+\begin{cases}
+\frac{1}{3}, & 1 \leq k \leq 3 \\
+0, & \text{otherwise}
+\end{cases}
+\label{pmf}
+\end{equation}
+\end{frame}
+
+\section{Solving}
+\begin{frame}{Solving}
+    Given that the coin shows head we have to find the conditional probability that the coin is $\mathcal{C}_1$. This is given by
+\begin{equation}
+    \pr{X = 1 | K}
+\end{equation}
+Where $K$ is the condition that the coin shows a head.\newline 
+Let $E$ be the event : A coin is chosen at random and is tossed, the outcome of this toss is a head and the coin is a two headed coin.
+\end{frame}
+
+\section{Solving (Contd.)}
+\begin{frame}{Solving (Contd.)}
+Now,
+\begin{align}
+   & \pr{E} = \frac{\pr{X = 1 \cap \mathcal{C}_1}}{\pr{K}} \\
+    &\pr{X = 1 \cap \mathcal{C}_1} = \frac{1}{3} \\
+    &\pr{K} = \sum_{i = 1}^{3}{\pr{X = i \cap \mathcal{C}_i}} \\
+    &\implies \pr{K} = \frac{1}{3} + \frac{1}{4} + \frac{1}{6} = \frac{3}{4} \\
+    &\implies \pr{E} = \frac{4}{9}
+\end{align}
+\end{frame}
+
+\end{document}
