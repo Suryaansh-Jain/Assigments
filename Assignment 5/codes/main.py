@@ -6,7 +6,7 @@ red_count = 0
 
 x = np.random.randint(2, size=1000000)
 
-for i in range(100000):
+for i in range(1000000):
     if (x[i] == 0):
         box[0] += 1
         top = random.randint(0, 1000)
