@@ -1,0 +1,66 @@
+%
+% Welcome to Overleaf --- just edit your LaTeX on the left,
+% and we'll compile it for you on the right. If you open the
+% 'Share' menu, you can invite other users to edit at the same
+% time. See www.overleaf.com/learn for more info. Enjoy!
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+% Inbuilt themes in beamer
+\documentclass{beamer}
+
+% Theme choice:
+\usetheme{CambridgeUS}
+
+% Title page details: 
+\title{Papoulis Question 5.14} 
+\author{Suryaansh Jain}
+\date{\today}
+\logo{\large \LaTeX{}}
+
+\providecommand{\pr}[1]{\ensuremath{\Pr\left(#1\right)}}
+
+
+\begin{document}
+
+% Title page frame
+\begin{frame}
+    \titlepage 
+\end{frame}
+
+% Remove logo from the next slides
+\logo{}
+
+
+% Outline frame
+\begin{frame}{Outline}
+    \tableofcontents
+\end{frame}
+
+
+\section{Question}
+\begin{frame}{Question}
+
+Given that random variable x is of continuous type. we form the random variable $y = g(x)$.
+(a) Find $f_y(y)$ if $g(x) = 2F_x(x) +4$. (b) Find $g(x)$ such that y is uniform in the interval
+(8, 10)
+\end{frame}
+
+
+\section{Solution}
+\begin{frame}{Solution}
+\begin{align}
+    g(x) = 2F_x(x) + 4 \\ 
+    g'(x) = 2f(x) \\
+\end{align}
+
+If $4 < x < 6$ then $y = 2F_x(x) + 4$ has a unique solution $x_1$ and 
+\begin{equation}
+    f_f(y) = \frac{f_x(x_1)}{2f_x(x_1)} = 0.5
+\end{equation}
+
+similarly $g(x) = 2F_x(x) + 4$
+\end{frame} 
+
+\end{document}
