@@ -1,0 +1,119 @@
+%
+% Welcome to Overleaf --- just edit your LaTeX on the left,
+% and we'll compile it for you on the right. If you open the
+% 'Share' menu, you can invite other users to edit at the same
+% time. See www.overleaf.com/learn for more info. Enjoy!
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+% Inbuilt themes in beamer
+\documentclass{beamer}
+
+% Theme choice:
+\usetheme{CambridgeUS}
+
+% Title page details: 
+\title{Papoulis Question 5.14} 
+\author{Suryaansh Jain}
+\date{\today}
+\logo{\large \LaTeX{}}
+
+\providecommand{\pr}[1]{\ensuremath{\Pr\left(#1\right)}}
+
+
+\begin{document}
+
+% Title page frame
+\begin{frame}
+    \titlepage 
+\end{frame}
+
+% Remove logo from the next slides
+\logo{}
+
+
+% Outline frame
+\begin{frame}{Outline}
+    \tableofcontents
+\end{frame}
+
+
+\section{Question}
+\begin{frame}{Question}
+
+$x$ and $y$ are independent Gamma random variables with  common parameters $\alpha$ and $\beta$. Find the p.d.f. of \\ 
+(a) $x + y$. \\ 
+(b) $x/y$. \\ 
+(c) $x/(x +y)$.
+\end{frame}
+
+\section{Solution}
+\begin{frame}{Genaral}
+    \begin{equation}
+        f(x) = 
+        \begin{cases}
+            \frac{x^{\alpha - 1}}{\Gamma (\alpha) {\beta}^{\alpha}} e^{-x/\beta}, & x \geq 0 \\
+            0, & otherwise
+        \end{cases}
+    \end{equation}
+        
+    \begin{equation}
+        f(y) = 
+        \begin{cases}
+            \frac{y^{\alpha - 1}}{\Gamma (\alpha) {\beta}^{\alpha}} e^{-y/\beta}, & y \geq 0 \\
+            0, & otherwise
+        \end{cases}
+    \end{equation}
+\end{frame} 
+
+\begin{frame}{Genaral}
+    \begin{align}
+        \phi_x (\omega) = \frac{1}{(1 - j \omega \beta )^\alpha} \\
+        \phi_y (\omega) = \frac{1}{(1 - j \omega \beta )^\alpha}
+    \end{align}
+\end{frame}
+
+\begin{frame}{Part (a)}
+
+    As $x$ and $y$ are independent $\phi_{x+y} (\omega) = \phi_x (\omega) \phi_y (\omega) $.
+
+    \begin{align}
+        \phi_{x+y} (\omega) &= \frac{1}{(1 - j \omega \beta )^{2\alpha}} \\
+        \implies \phi_{x+y} (\omega) &\sim \text{Gamma} (2\alpha, \beta)
+    \end{align}
+    
+\end{frame} 
+
+\begin{frame}{Part (b)}
+    Let $z =  x/y$ then we know,
+    
+    \begin{align}
+        f_z(z) &= \int_{0}^{\infty} y\ f_{xy}(yz , y) \,dy \\
+        \implies f_z(z) &= \int_{0}^{\infty} y\ \frac{(y^2 z)^{\alpha - 1}}{(\Gamma(\alpha) \beta ^ \alpha)^2} e^{-(1+z)y/\beta} \,dy\\
+        &= \frac{z^{\alpha-1}}{\Gamma(\alpha) \beta ^ \alpha)^2}\int_{0}^{\infty} y^{(2\alpha - 1)}e^{-(1+z)y/\beta} \,dy\\
+        &= \frac{z^{\alpha-1}}{\Gamma(\alpha) \beta ^ \alpha)^2} \frac{\beta^{2\alpha}}{(1+z)^{2\alpha}}\int_{0}^{\infty} u^{2\alpha - 1} e^{-u} \,du\\
+        &= \frac{\Gamma(2\alpha)\ z^{\alpha - 1}}{(\Gamma(\alpha))^2 (1+z)^ {2\alpha}},\ \ \ \ z > 0
+    \end{align}
+\end{frame}
+
+\begin{frame}{Part (c)}
+    Let, 
+    \begin{equation}
+        w = \frac{x}{x+y} = \frac{z}{z+1}
+    \end{equation}
+    
+    \begin{equation}
+        F_w(w) = P\left(\frac{z}{1+z} \leq w\right) = P\left(\frac{w}{1-w} \geq z\right) = F_z\left(\frac{w}{1-w}\right)
+    \end{equation}
+    
+    Differentiation the above eqn. we get, 
+    \begin{align}
+        f_w(w) &= \frac{1}{(1-w)^2} f_z\left(\frac{w}{1-w} \right) \\
+        &= \frac{\Gamma(2\alpha}{(\Gamma(\alpha))^2} w^{\alpha - 1} (1-w)^{\alpha - 1}\\
+        &\sim \text{Beta} (\alpha, \alpha)
+    \end{align}
+\end{frame}
+
+\end{document}
+
