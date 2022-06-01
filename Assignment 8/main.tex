@@ -1,0 +1,122 @@
+%
+% Welcome to Overleaf --- just edit your LaTeX on the left,
+% and we'll compile it for you on the right. If you open the
+% 'Share' menu, you can invite other users to edit at the same
+% time. See www.overleaf.com/learn for more info. Enjoy!
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+% Inbuilt themes in beamer
+\documentclass{beamer}
+
+% Theme choice:
+\usetheme{CambridgeUS}
+
+% Title page details: 
+\title{Papoulis Question 6.60} 
+\author{Suryaansh Jain}
+\date{\today}
+\logo{\large \LaTeX{}}
+
+\providecommand{\pr}[1]{\ensuremath{\Pr\left(#1\right)}}
+
+
+\begin{document}
+
+% Title page frame
+\begin{frame}
+    \titlepage 
+\end{frame}
+
+% Remove logo from the next slides
+\logo{}
+
+
+% Outline frame
+\begin{frame}{Outline}
+    \tableofcontents
+\end{frame}
+
+
+\section{Question}
+\begin{frame}{Question}
+
+$x$ and $y$ are independent exponential random variables with common parameter $\lambda$. Find \\
+(a) $E[\text{min}(x, y)]$ \\
+(b) $E[\text{max}(2x, y)]$.
+\end{frame}
+
+\section{Solution}
+\begin{frame}{Genaral}
+    \begin{equation}
+        f(x) = 
+        \begin{cases}
+            \lambda e^{-\lambda x}, & x \geq 0 \\
+            0, & otherwise
+        \end{cases}
+    \end{equation}
+        
+    \begin{equation}
+        f(y) = 
+        \begin{cases}
+            \lambda e^{-\lambda y}, & y \geq 0 \\
+            0, & otherwise
+        \end{cases}
+    \end{equation}
+\end{frame} 
+
+\begin{frame}{Part (a)}
+
+    Let $w = \text{min}(x,y)$
+    Then from inclusion-exclusion,
+    \begin{equation}
+        F_w(w) = F_x(w) + F_y(w) - F_x(w).F_y(w)
+    \end{equation}
+    Differentiating,
+    \begin{equation}
+        f_w(w) = f_x(w) + f_y(w) - f_x(w).F_y(w) - F_x(w).f_y(w)
+    \end{equation}
+    
+    Plugging the values of $f_x(w)$ and $f_y(w)$,
+    
+    \begin{equation}
+        f_w(w) = 2\lambda e^{-2\lambda w}
+    \end{equation}
+    
+    As this an exponential variable its expected value is,
+    
+    \begin{equation}
+        E(\text{min}(x,y)) = \frac{1}{2\lambda}
+    \end{equation}
+    
+\end{frame} 
+
+\begin{frame}{Part (b)}
+    Let $z = \text{man}(2x,y)$
+    Then,
+    \begin{align}
+        F_w(w) &= P(\text{max}(2x, y) \leq z) \\
+        &= P(2x \leq z, 2x \geq y) + P(y \leq z, y \geq 2x) \\
+        &= P(2x \leq z, y \leq z) \\
+        &= F_{xy}(z/2 , z)
+    \end{align}
+    
+    As $x$ ans $y$ are independent $F_{xy}(z/2 , z) = F_x(z/2).F_y(z)$
+    \begin{equation}
+        F_w(w) = F_x(z/2).F_y(z)
+    \end{equation}
+\end{frame}
+
+\begin{frame}{Part (b) Contd.}
+    Differentiating, 
+    \begin{align}
+        f_z(z) &= F_x(z/2).f_y(z) + \frac{1}{2} f_x(z/2).F_y(z)\\
+        &= \left(1 - e^{-\lambda z/2} \right).e^{-\lambda z} + \frac{1}{2}\left(1 - e^{\lambda z} \right).e^{-\lambda z/2}\\
+        &= \lambda e^{-\lambda z} - \frac{3}{2}\lambda e^{-\frac{3}{2}\lambda z} + \frac{1}{2}\lambda e^{-\frac{1}{2}\lambda z} \\
+        &\implies E(z) = \frac{1}{\lambda} - \frac{2}{3\lambda} + \frac{2}{\lambda} = \frac{7}{3\lambda}
+    \end{align}
+\end{frame}
+
+\end{document}
+
