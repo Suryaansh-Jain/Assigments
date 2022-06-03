@@ -97,12 +97,12 @@ $x$ and $y$ are independent exponential random variables with common parameter $
     Then,
     \begin{align}
         F_z(z) &= P(\text{max}(2x, y) \leq z) \\
-        &= P(2x \leq z, 2x \geq y) + P(y \leq z, y \geq 2x) \\
         &= P(2x \leq z, y \leq z) \\
+        &= P(x \leq z/2, y \leq z) \\
         &= F_{xy}(z/2 , z)
     \end{align}
     
-    As $x$ ans $y$ are independent $F_{xy}(z/2 , z) = F_x(z/2).F_y(z)$
+    As $x$ and $y$ are independent $F_{xy}(z/2 , z) = F_x(z/2).F_y(z)$
     \begin{equation}
         F_z(z) = F_x(z/2).F_y(z)
     \end{equation}
