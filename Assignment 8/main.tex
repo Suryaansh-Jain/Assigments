@@ -93,10 +93,10 @@ $x$ and $y$ are independent exponential random variables with common parameter $
 \end{frame} 
 
 \begin{frame}{Part (b)}
-    Let $z = \text{man}(2x,y)$
+    Let $z = \text{max}(2x,y)$
     Then,
     \begin{align}
-        F_w(w) &= P(\text{max}(2x, y) \leq z) \\
+        F_z(z) &= P(\text{max}(2x, y) \leq z) \\
         &= P(2x \leq z, 2x \geq y) + P(y \leq z, y \geq 2x) \\
         &= P(2x \leq z, y \leq z) \\
         &= F_{xy}(z/2 , z)
@@ -104,7 +104,7 @@ $x$ and $y$ are independent exponential random variables with common parameter $
     
     As $x$ ans $y$ are independent $F_{xy}(z/2 , z) = F_x(z/2).F_y(z)$
     \begin{equation}
-        F_w(w) = F_x(z/2).F_y(z)
+        F_z(z) = F_x(z/2).F_y(z)
     \end{equation}
 \end{frame}
 
@@ -119,4 +119,3 @@ $x$ and $y$ are independent exponential random variables with common parameter $
 \end{frame}
 
 \end{document}
-
