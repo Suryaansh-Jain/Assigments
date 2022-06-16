@@ -1,0 +1,174 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Welcome to Overleaf --- just edit your LaTeX on the left,
+% and we'll compile it for you on the right. If you open the
+% 'Share' menu, you can invite other users to edit at the same
+% time. See www.overleaf.com/learn for more info. Enjoy!
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+% Inbuilt themes in beamer
+\documentclass{beamer}
+
+% Theme choice:
+\usetheme{CambridgeUS}
+\usepackage{amsmath}
+
+\usepackage{array}
+\newcolumntype{P}[1]{>{\centering\arraybackslash}p{#1}}
+
+% Title page details: 
+\title{AI1110: Probability and Random Variables}
+\subtitle{Assignment 11: Papoulis-Pillai Ex 8-28}
+\author{Suruaansh Jain (cs21btech11057)}
+
+\date{\today}
+
+
+\begin{document}
+
+% Title page frame
+\begin{frame}
+	\titlepage 
+\end{frame}
+
+% Outline frame
+\begin{frame}{Outline}
+	\tableofcontents
+\end{frame}
+
+% Problem
+\section{Problem}
+
+\begin{frame}{Assignment 9}
+	\frametitle{Problem}
+	Brand A batteries cost more than brand B batteries. Their life lengths are two normal and
+independent random variables $x$ and $y$. We test 16 batteries of brand A and 26 batteries of brand B and find these values in hours:
+$\bar x =4.6\ s_x = 1.1\ \bar y =4.2\ s_y =0.9$
+Test the hypothesis $\eta _x = \eta _y$, against $\eta _x > \eta _y$, with $\alpha = 0.05$
+\end{frame}
+
+% Solution
+\section{Solution}
+
+% Definitions
+\subsection{Definitions}
+\begin{frame}
+	\frametitle{Percentile}
+	Given a distribution on random variable $x$ as $F_x(x)$, we define the $k^{th}$ percentile of this distribution as
+	\begin{align}
+		Percentile_k = F_x^{-1}(k)
+		\label{eq:Percentile}
+	\end{align}
+
+	In other words, the $k^{th}$ percentile returns the value of random variable $x_0$ for which $F_x(x_0) = k$.
+\end{frame}
+
+\begin{frame}
+	\frametitle{Hypothesis}
+	Let us assume, we are given a random variable $x$ whose distribution is $F(x, \theta)$ depending on some parameter $\theta$ (The parameter might be mean, variance etc.). We are required to use evidence that either supports or rejects a given prediction of the actual value of $\theta$, which we will call $\theta_0$.
+	
+	\begin{block}{Null Hypothesis}
+		In the null hypothesis, we make the prediction that $\theta = \theta_0$. This is represented by $H_0 : \theta = \theta_0$.
+	\end{block}
+	
+	\begin{block}{Alternate Hypothesis}
+		In the alternate hypothesis, we make the prediction that $\theta \neq \theta_0$. This is represented by $H_1 : \theta \neq \theta_0$. Note that the null hypothesis may be defined differently based on utility.
+	\end{block}	
+
+\end{frame}
+
+\begin{frame}
+	\frametitle{Testing Hypothesis}
+	To test whether a given hypothesis is feasible based on evidence, we first define a random variable $q$ whose density is convenient to plot and is a function of sample vector $X$ as follows.
+	\begin{align}
+		q = g(X)
+		\label{eq:TestStat}
+	\end{align}
+	We will call $q$ as the test statistic.
+
+	The density of random variable $q$ is given by $p_q(q, \theta)$ where $\theta$ is the parameter. Now consider the density $p_q(q, \theta_0)$ (based on $H_0$) and a region (Critical Region) $R_c$ where $p_q(q, \theta_0)$ is negligible. If we find that the value of $q$ lies in $R_c$, then we reject $H_0$.
+
+	One can decide the region $R_c$ using the significance level $\alpha$. $\alpha$ represents the probability that $q \in R_c$ when $H_0$ is true. Hence, when given a value of $\alpha$ one can determine $R_c$ and thereby check the validity of the null hypothesis. 
+\end{frame}
+
+\begin{frame}
+	\frametitle{Mean as Parameter: Unknown Variance}
+	Consider a random variable $x$, from which we have obtained a sample vector $X$. We are required to reject or support the hypothesis $H_0: \eta = \eta_0$ against $H_1: \eta \neq \eta_0$, where we check if the mean $\eta$ equals a constant $\eta_0$.
+
+	In the case that the variance is unknown but the sample mean $\bar{x}$ and sample variance $s^2$ are given, we must use a Student t distribution. Note that the sample vector $X$ has $n - 1$ degrees of freedom as we are constrained to ensure that the sum of the values of the vector $X - \bar{x}$ must be 0.
+
+	Assuming random variable $\bar{x}$ is represented by a normal distribution, we define test statistic $q$ as follows:
+	\begin{align}
+		q = \frac{\bar{x} - \eta_0}{s/\sqrt{n}}
+		\label{eq:UnknownVar}
+	\end{align}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Mean as Parameter: Unknown Variance}
+	For an alternate hypothesis $H_1: \eta \neq \eta_0$ and given significance value $\alpha$, we note that the critical region $R_c$ is given by:
+	\begin{align}
+		R_c = (t_{1-\alpha}(n - 1), \infty)
+		\label{eq:CriticalReg}
+	\end{align}
+
+	where $t_k(n - 1)$ represents the $k^{th}$ percentile (As explained in \eqref{eq:Percentile})
+
+	We consider the $\alpha^{th}$ and its complementary percentile as the given hypothesis is single ended, i.e., it allows us accept values less than the hypothesised mean value.
+
+\end{frame}
+
+\subsection{Transformation}
+\begin{frame}
+    \frametitle{Stating the Transformation}
+    Let, 
+    \begin{align}
+        w &= \bar x - \bar y = 0.4\\ 
+        \implies \sigma _w^2 &= \frac{\sigma _x^2}{16} + \frac{\sigma _y^2}{26} = 0.32
+    \end{align}
+\end{frame}
+
+% Stating hypothesis
+\subsection{Hypothesis}
+\begin{frame}
+	\frametitle{Stating the Hypothesis}
+	We state the null Hypothesis as
+	\begin{align}
+		H_0 : \eta = 0
+		\label{eq:NullHyp}
+	\end{align}
+	and the alternate hypothesis as
+	\begin{align}
+		H_1 : \eta  > 0
+		\label{eq:AltHyp}
+	\end{align}
+
+	We are required to test the above hypotheses for significance value $\alpha = 0.05$
+\end{frame}
+
+% Calculating test statistic
+\subsection{Test Statistic}
+\begin{frame}
+	\frametitle{Calculate Test Statistic $q$}
+	Given sample mean $\bar{x} =4.35$ and sample variance $s = 0.32 $, we get our test statistic $q$ from
+	\eqref{eq:UnknownVar}
+	as
+	\begin{align}
+		q = \frac{0.4 - 0}{0.32} = 1.223
+		\label{eq:QVal}
+	\end{align}
+\end{frame}
+
+% Making Decision
+\subsection{Decision}
+\begin{frame}
+	\frametitle{Making Decision}
+	We shall determine the critical regions for given significance values $\alpha_1$ and $\alpha_2$ using
+	\eqref{eq:CriticalReg}
+
+	For $\alpha = 0.005$, we find that $t_{0.995} = 1.64$.As $q < 1.64$ we can accept this hypothesis.
+\end{frame}
+\end{document}
+
