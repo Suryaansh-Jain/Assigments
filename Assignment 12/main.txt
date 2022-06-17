@@ -1,0 +1,69 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Welcome to Overleaf --- just edit your LaTeX on the left,
+% and we'll compile it for you on the right. If you open the
+% 'Share' menu, you can invite other users to edit at the same
+% time. See www.overleaf.com/learn for more info. Enjoy!
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+% Inbuilt themes in beamer
+\documentclass{beamer}
+
+% Theme choice:
+\usetheme{CambridgeUS}
+\usepackage{amsmath}
+
+\usepackage{array}
+\newcolumntype{P}[1]{>{\centering\arraybackslash}p{#1}}
+
+% Title page details: 
+\title{AI1110: Probability and Random Variables}
+\subtitle{Assignment 12: Papoulis-Pillai Example 15.10}
+\author{Suryaansh Jain (cs21btech11057)}
+
+\date{\today}
+
+
+\begin{document}
+
+% Title page frame
+\begin{frame}
+	\titlepage 
+\end{frame}
+
+% Outline frame
+\begin{frame}{Outline}
+	\tableofcontents
+\end{frame}
+
+% Problem
+\section{Problem}
+
+\begin{frame}{Assignment 9}
+	\frametitle{Problem}
+	Let N represent the combined population of two cities A and B. Suppose migration occurs between the cities one at a time with probability proportional to the population of the city. and let the population of A determine the state of the system. Find the equilibrium state of the system. 
+\end{frame}
+
+% Solution
+\section{Solution}
+\begin{frame}{Solution}
+A can move into either $e_k-1$ or $e_k+1$ with probabilities $k/N$ or $1- k/N$ respectively. Thus the transition matrix looks like
+\begin{align}
+    \textbf{P} = \begin{pmatrix}
+        0 & 1 & 0 & . & . & . & . & 0\\
+        p & 0 & 1-p & 0 & . & . & . & 0\\
+        0 & 2p & 0 & 1-2p & . & . & . & 0\\
+        0 & 0 & 3p & 0 & 1-3p & 0 & . & 0\\
+        . & . & . & . & . & . & . & .\\
+        0 & 0 & 0 & . & . & 1-p & 0 & p\\
+        0 & 0 & 0 & . & . & . & 1 & 0\\
+    \end{pmatrix}
+\end{align}
+    where $p =1/N$. We can also think of this model as a random walk with totally reflective barriers where the probability of a step varies with the position or state. If $k<N/2$ the particle is more likely to move to the right, and if $k>N/2$ the particle will move to the left and therefore any particle will move to the center which is the Equilibrium state.
+    
+\end{frame}
+
+\end{document}
+
